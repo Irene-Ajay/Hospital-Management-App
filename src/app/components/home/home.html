@@ -1,7 +1,10 @@
 <div class="hero">
   <div class="hero-content">
     <h1>Your Health, Our Priority</h1>
-    <p>Book appointments with top specialists, manage your medical records, and stay on top of your health — all in one place.</p>
+    <p>
+      Book appointments with top specialists, manage your medical records, and stay on top of your
+      health &mdash; all in one place.
+    </p>
     <button mat-raised-button color="accent" (click)="bookNow()">Find a Doctor</button>
   </div>
 </div>
@@ -23,7 +26,9 @@
   <h2>Our Specializations</h2>
   <div class="chip-list">
     <mat-chip-set>
-      <mat-chip *ngFor="let s of specializations">{{ s }}</mat-chip>
+      <mat-chip *ngFor="let s of specializations" (click)="exploreSpecialization(s)" class="spec-chip">
+        {{ s }}
+      </mat-chip>
     </mat-chip-set>
   </div>
 </section>

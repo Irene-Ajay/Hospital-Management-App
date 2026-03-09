@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -23,4 +23,8 @@ export class HomeComponent {
   specializations = ['Cardiology', 'Neurology', 'Pediatrics', 'Orthopedics', 'Dermatology'];
   constructor(private router: Router) {}
   bookNow(): void { this.router.navigate(['/doctors']); }
+
+  exploreSpecialization(spec: string): void {
+    this.router.navigate(['/doctors'], { queryParams: { spec } });
+  }
 }

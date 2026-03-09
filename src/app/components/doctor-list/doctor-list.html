@@ -1,19 +1,37 @@
 <div class="container">
   <div class="header">
     <h1>Our Doctors</h1>
-    <mat-form-field appearance="outline">
-      <mat-label>Filter by Specialization</mat-label>
-      <mat-select [(ngModel)]="selectedSpec">
-        <mat-option *ngFor="let s of specializations" [value]="s">{{ s }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="filters">
+      <mat-form-field appearance="outline">
+        <mat-label>Search doctor</mat-label>
+        <input matInput [(ngModel)]="searchTerm" placeholder="Name or specialization">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Specialization</mat-label>
+        <mat-select [(ngModel)]="selectedSpec">
+          <mat-option *ngFor="let s of specializations" [value]="s">{{ s }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Sort by</mat-label>
+        <mat-select [(ngModel)]="sortBy">
+          <mat-option value="rating">Top Rated</mat-option>
+          <mat-option value="experience">Most Experienced</mat-option>
+          <mat-option value="fee-low">Fee: Low to High</mat-option>
+          <mat-option value="fee-high">Fee: High to Low</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-stroked-button type="button" (click)="clearFilters()">Clear</button>
+    </div>
   </div>
 
+  <p class="results-count">{{ filteredDoctors.length }} doctor(s) found</p>
+
   <div class="doctor-grid">
-    <mat-card
-      *ngFor="let doctor of doctors | filterDoctor:selectedSpec"
-      [appHighlight]="doctor.rating"
-      class="doctor-card">
+    <mat-card *ngFor="let doctor of filteredDoctors" [appHighlight]="doctor.rating" class="doctor-card">
       <mat-card-header>
         <mat-card-title>{{ doctor.name }}</mat-card-title>
         <mat-card-subtitle>{{ doctor.specialization }}</mat-card-subtitle>
@@ -23,7 +41,7 @@
           <p class="rating">{{ getStars(doctor.rating) }} <strong>{{ doctor.rating }}/5</strong></p>
           <p><mat-icon>work</mat-icon> <strong>Experience:</strong> {{ doctor.experience }} years</p>
           <p><mat-icon>schedule</mat-icon> <strong>Available:</strong> {{ doctor.availability.join(', ') }}</p>
-          <p class="fee"><mat-icon>payments</mat-icon> <strong>Fee:</strong> ₹{{ doctor.fee }}</p>
+          <p class="fee"><mat-icon>payments</mat-icon> <strong>Fee:</strong> &#8377;{{ doctor.fee }}</p>
           <p><mat-icon>email</mat-icon> <strong>Email:</strong> {{ doctor.email }}</p>
         </div>
       </mat-card-content>
@@ -35,9 +53,9 @@
     </mat-card>
   </div>
 
-  <div *ngIf="doctors.length === 0" class="no-doctors">
+  <div *ngIf="filteredDoctors.length === 0" class="no-doctors">
     <mat-icon color="warn">error</mat-icon>
-    <h3>No doctors available</h3>
-    <p>Please try again later or contact support.</p>
+    <h3>No matching doctors found</h3>
+    <p>Try changing your filters or search term.</p>
   </div>
 </div>

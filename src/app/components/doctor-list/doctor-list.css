@@ -1,6 +1,9 @@
 .container { padding: 32px 40px; }
 .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
 .header h1 { color: #3f51b5; font-size: 2rem; }
+.filters { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.filters mat-form-field { min-width: 220px; }
+.results-count { margin: -8px 0 20px; color: #666; font-weight: 500; }
 .doctor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; }
 .doctor-card { transition: transform 0.2s; height: auto; }
 .doctor-card:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
@@ -9,3 +12,9 @@
 mat-icon { font-size: 18px; vertical-align: middle; color: #666; }
 .fee { color: #4caf50; font-weight: bold; font-size: 1.1rem; }
 .no-doctors { text-align: center; padding: 40px; color: #666; }
+
+@media (max-width: 768px) {
+  .container { padding: 20px; }
+  .doctor-grid { grid-template-columns: 1fr; }
+  .filters mat-form-field { width: 100%; min-width: 0; }
+}
