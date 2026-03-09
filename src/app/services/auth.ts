@@ -6,12 +6,13 @@ import { AuthUser } from '../models/user.model';
 import { Patient } from '../models/patient.model';
 import { Doctor } from '../models/doctor.model';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private currentUserSubject = new BehaviorSubject<AuthUser | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
-  private patientsUrl = 'http://localhost:3000/patients';
+  private patientsUrl = `${environment.apiUrl}/patients`;
 
   constructor(private http: HttpClient, private router: Router) {
     const stored = localStorage.getItem('currentUser');

@@ -145,6 +145,19 @@
       "status": "pending",
       "notes": "Test appointment",
       "fee": 1500
+    },
+    {
+      "id": "da36",
+      "patientId": "2",
+      "patientName": "Priya Sharma",
+      "doctorId": "2",
+      "doctorName": "Dr. Priya Patel",
+      "specialization": "Neurology",
+      "date": "2026-03-08",
+      "time": "11:00",
+      "status": "pending",
+      "notes": "insomnia",
+      "fee": 2000
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

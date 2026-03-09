@@ -17,6 +17,7 @@ import { AppointmentService } from '../../services/appointment';
 import { AuthService } from '../../services/auth';
 import { Doctor } from '../../models/doctor.model';
 import { Patient } from '../../models/patient.model';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-appointment-form',
@@ -62,7 +63,7 @@ export class AppointmentFormComponent implements OnInit {
 
     if (this.isReceptionist) {
       this.appointmentForm.addControl('patientId', this.fb.control('', Validators.required));
-      this.http.get<Patient[]>('http://localhost:3000/patients').subscribe(patients => {
+      this.http.get<Patient[]>(`${environment.apiUrl}/patients`).subscribe(patients => {
         this.patients = patients.filter(p => (p as any).role !== 'receptionist'); // Exclude receptionists
       });
     }
