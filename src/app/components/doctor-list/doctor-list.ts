@@ -32,7 +32,15 @@ export class DoctorListComponent implements OnInit {
   constructor(private doctorService: DoctorService, private router: Router) {}
 
   ngOnInit(): void {
-    this.doctorService.getDoctors().subscribe(data => this.doctors = data);
+    this.doctorService.getDoctors().subscribe({
+      next: (data) => {
+        this.doctors = data;
+        console.log('Doctors loaded:', data);
+      },
+      error: (err) => {
+        console.error('Error loading doctors:', err);
+      }
+    });
   }
 
   bookAppointment(doctor: Doctor): void {

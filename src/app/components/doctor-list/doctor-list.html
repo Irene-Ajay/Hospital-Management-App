@@ -32,4 +32,10 @@
       </mat-card-actions>
     </mat-card>
   </div>
+
+  <div *ngIf="doctors.length === 0" class="no-doctors">
+    <mat-icon color="warn">error</mat-icon>
+    <h3>No doctors available</h3>
+    <p>Please try again later or contact support.</p>
+  </div>
 </div>
