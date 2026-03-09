@@ -1,10 +1,11 @@
 .container { padding: 32px 40px; }
 .header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; flex-wrap: wrap; gap: 16px; }
 .header h1 { color: #3f51b5; font-size: 2rem; }
-.doctor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; }
-.doctor-card { transition: transform 0.2s; }
-.doctor-card:hover { transform: translateY(-4px); }
-.doctor-card img { height: 200px; object-fit: cover; }
-.rating { color: #ffa000; font-size: 1.1rem; }
-mat-icon { font-size: 16px; vertical-align: middle; }
-.fee { color: #4caf50; font-weight: bold; }
+.doctor-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 24px; }
+.doctor-card { transition: transform 0.2s; height: auto; }
+.doctor-card:hover { transform: translateY(-4px); box-shadow: 0 8px 16px rgba(0,0,0,0.1); }
+.doctor-info p { margin: 8px 0; display: flex; align-items: center; gap: 8px; }
+.rating { color: #ffa000; font-size: 1.1rem; margin-bottom: 12px; }
+mat-icon { font-size: 18px; vertical-align: middle; color: #666; }
+.fee { color: #4caf50; font-weight: bold; font-size: 1.1rem; }
+.no-doctors { text-align: center; padding: 40px; color: #666; }

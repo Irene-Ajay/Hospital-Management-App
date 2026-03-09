@@ -14,16 +14,18 @@
       *ngFor="let doctor of doctors | filterDoctor:selectedSpec"
       [appHighlight]="doctor.rating"
       class="doctor-card">
-      <img mat-card-image [src]="doctor.image" [alt]="doctor.name">
       <mat-card-header>
         <mat-card-title>{{ doctor.name }}</mat-card-title>
         <mat-card-subtitle>{{ doctor.specialization }}</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
-        <p class="rating">{{ getStars(doctor.rating) }} <strong>{{ doctor.rating }}</strong></p>
-        <p><mat-icon>work</mat-icon> {{ doctor.experience }} years experience</p>
-        <p><mat-icon>schedule</mat-icon> {{ doctor.availability.join(', ') }}</p>
-        <p class="fee"><mat-icon>payments</mat-icon> {{ doctor.fee | currency:'INR' }} per visit</p>
+        <div class="doctor-info">
+          <p class="rating">{{ getStars(doctor.rating) }} <strong>{{ doctor.rating }}/5</strong></p>
+          <p><mat-icon>work</mat-icon> <strong>Experience:</strong> {{ doctor.experience }} years</p>
+          <p><mat-icon>schedule</mat-icon> <strong>Available:</strong> {{ doctor.availability.join(', ') }}</p>
+          <p class="fee"><mat-icon>payments</mat-icon> <strong>Fee:</strong> ₹{{ doctor.fee }}</p>
+          <p><mat-icon>email</mat-icon> <strong>Email:</strong> {{ doctor.email }}</p>
+        </div>
       </mat-card-content>
       <mat-card-actions>
         <button mat-raised-button color="primary" (click)="bookAppointment(doctor)">
